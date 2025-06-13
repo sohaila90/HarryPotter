@@ -13,6 +13,26 @@ public class HarryPotterGame
     
     public void StartAdventure()
     {
+        Console.WriteLine("Welcome to the Harry Potter game, please choose an option below to continue: ");
+        Console.WriteLine("1. Introduction of the characters");
+        Console.WriteLine("2. ");
+        Console.WriteLine("3. ");
+        
+        var userOption = Console.ReadLine();
+        switch (userOption)
+        {
+            case "1":
+                //Intro til karakterene
+                CharacterIntro();
+                break;
+            case "2":
+                //Lag valg for å kjøpe produkter
+                break;
+            case "3": 
+                // Lag valg for å utføre trylleformel
+                break;
+        }
+        
         Store store = new Store();
         store.BuyAnimals(_harryPotters[0]);
         store.BuyWands(_harryPotters[0]);
@@ -24,6 +44,16 @@ public class HarryPotterGame
             
         }
         
+    }
+    
+    public void CharacterIntro()
+    {
+        Console.WriteLine($"Welcome to the game, lets have an introduction of the characters  lives in");
+        foreach (var character in _harryPotters)
+        {
+            Console.WriteLine(character.Name); 
+        }
+
     }
     
 }

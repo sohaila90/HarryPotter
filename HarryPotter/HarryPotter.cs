@@ -9,8 +9,7 @@ public class HarryPotter
     public HarryPotter(string name, string house)
     {
         Name = name;
-        House = house;
-        // CharacterIntro();
+        House = house; 
     }
     
     public string PrintInfo()
@@ -30,11 +29,6 @@ public class HarryPotter
         return items;
 
     }
-
-    // public void CharacterIntro()
-    // {
-    //     Console.WriteLine($"Welcome to the game, lets have an introduction of the characters \n {Name} lives in {House}");
-    // }
 }
 
 

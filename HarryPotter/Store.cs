@@ -26,7 +26,7 @@ public class Store
     }
     
     //Du får tilgang til alle funksjonene som er public i HarryPotter class
-    public void BuyWands(HarryPotter character)
+    public string BuyWands(HarryPotter character)
     {
         PrintList(_listOfWands);
         Console.WriteLine("Choose the wand you would like to buy");
@@ -35,6 +35,7 @@ public class Store
         var number = int.Parse(userOption);
         //Legger til i karakterens inventory 
         character.Inventory.Add(_listOfWands[number-1]);
+        return _listOfWands[number -1].Name;
     }
 
     public void PrintList(List<Item> list)

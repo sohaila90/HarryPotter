@@ -2,8 +2,8 @@ namespace HarryPotter;
 
 public class HarryPotterGame
 {
-    private Store _myStore = new Store();
-    
+    private Store _myAnimal = new Store();
+    private Store _myWand = new Store();
 
     private List<HarryPotter> _harryPotters = new List<HarryPotter>()
     {
@@ -19,9 +19,9 @@ public class HarryPotterGame
             Console.WriteLine("Welcome to the Harry Potter game, please choose an option below to continue: ");
             Console.WriteLine("1. Show an introduction of the characters");
             Console.WriteLine("2. Buy animals");
-            Console.WriteLine("3. Cast a spell");
+            Console.WriteLine("3. Buy a magic wand");
+            Console.WriteLine("4. Cast a spell");
             
-        
             var userOption = Console.ReadLine();
             switch (userOption)
             {
@@ -31,7 +31,7 @@ public class HarryPotterGame
                     break;
                 case "2":
                     //Lag valg for å kjøpe produkter
-                    // prøv å lage en metode til dette
+                    // prøv å lage en metode til dette etterhvert
                     Console.WriteLine("Choose a character");
                     for (int j = 0; j < _harryPotters.Count; j++)
                     {
@@ -40,9 +40,12 @@ public class HarryPotterGame
                     var userInput = Console.ReadLine();
                     int index = int.Parse(userInput) -1;
                     var chooseCharacter = _harryPotters[index];
-                    _myStore.BuyAnimals(chooseCharacter);
-                    break; 
-                case "3": 
+                    _myAnimal.BuyAnimals(chooseCharacter);
+                    break;
+                case "3":
+                    ShowWands(_harryPotters[0]);
+                    break;
+                case "4": 
                     // Lag valg for å utføre trylleformel
                     Console.WriteLine("Choose the spell you want to cast");
                     Console.WriteLine("1. Make a feather fly");
@@ -57,17 +60,11 @@ public class HarryPotterGame
                             Console.WriteLine($"Hokus pokus fireworks!!");
                             break;
                     }
-
                     break;
             }
-
             Console.WriteLine("Press any key to go back to the menu");
             Console.ReadKey();
         }
-        
-        // trylleformler: 
-        // vingardium leviosa (får en fjær til å fly)
-        // hokus pokus (fyrer av fyrverkerier)
     }
 
     private void CharacterIntro()
@@ -80,20 +77,18 @@ public class HarryPotterGame
         }
 
     }
-    
+
+    private void ShowWands(HarryPotter character)
+    {
+        Console.WriteLine("Choose a character:");
+        for (int i = 0; i < _harryPotters.Count; i++)
+        {
+            Console.WriteLine($"{i +1} {_harryPotters[i].Name}");
+        }
+        var userWandInput = Console.ReadLine();
+        int index = int.Parse(userWandInput) - 1;
+        var chooseCharacter = _harryPotters[index];
+        var wand = _myWand.BuyWands(chooseCharacter);
+        Console.WriteLine($"{chooseCharacter.Name} is now a owner of a {wand}");
+    }
 }
-
-
-//Bruker skal kunne velge hvilken karakter han vil styre
-//deretter lagre valget han tar
-//lage switch for etter det lage et valg om bruker vil gå til butikken eller gjøre trylleformel
-// eller om man vil kjøpe dyr, stav
-
-
-
-// Få applikasjonen til å printe ut en introduksjon for karakteren,
-// som sier noe om hva de heter, hvilket hus de er medlem av og hvilke items de har
-
-// Karakteren skal ha mulighet til å gå inn i en Magibutikk, der kan de kjøpe et dyr:
-// ugle,rotte eller en katt. De har også mulighet til å kjøpe
-// en tryllestav: føniksstav, unikornstav eller trollstav.

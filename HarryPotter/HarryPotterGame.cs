@@ -2,7 +2,7 @@ namespace HarryPotter;
 
 public class HarryPotterGame
 {
-    private Store _myAnimal = new Store();
+    private readonly Store _myAnimal = new Store();
     private Store _myWand = new Store();
 
     private List<HarryPotter> _harryPotters = new List<HarryPotter>()
@@ -26,27 +26,16 @@ public class HarryPotterGame
             switch (userOption)
             {
                 case "1":
-                    //Intro til karakterene
                     CharacterIntro();
                     break;
                 case "2":
-                    //Lag valg for å kjøpe produkter
-                    // prøv å lage en metode til dette etterhvert
-                    Console.WriteLine("Choose a character");
-                    for (int j = 0; j < _harryPotters.Count; j++)
-                    {
-                        Console.WriteLine($"{j +1 }. {_harryPotters[j].Name}");
-                    }
-                    var userInput = Console.ReadLine();
-                    int index = int.Parse(userInput) -1;
-                    var chooseCharacter = _harryPotters[index];
-                    _myAnimal.BuyAnimals(chooseCharacter);
+                    ShowAnimals();
                     break;
                 case "3":
-                    ShowWands(_harryPotters[0]);
+                    ShowWands();
                     break;
                 case "4": 
-                    // Lag valg for å utføre trylleformel
+                    // Trylleformel
                     Console.WriteLine("Choose the spell you want to cast");
                     Console.WriteLine("1. Make a feather fly");
                     Console.WriteLine("2. Sets off fireworks");
@@ -66,6 +55,7 @@ public class HarryPotterGame
             Console.ReadKey();
         }
     }
+    
 
     private void CharacterIntro()
     {
@@ -78,7 +68,7 @@ public class HarryPotterGame
 
     }
 
-    private void ShowWands(HarryPotter character)
+    private void ShowWands()
     {
         Console.WriteLine("Choose a character:");
         for (int i = 0; i < _harryPotters.Count; i++)
@@ -90,5 +80,19 @@ public class HarryPotterGame
         var chooseCharacter = _harryPotters[index];
         var wand = _myWand.BuyWands(chooseCharacter);
         Console.WriteLine($"{chooseCharacter.Name} is now a owner of a {wand}");
+    }
+
+    private void ShowAnimals()
+    {
+        Console.WriteLine("Choose a character");
+        for (int j = 0; j < _harryPotters.Count; j++)
+        {
+            Console.WriteLine($"{j +1 }. {_harryPotters[j].Name}");
+        }
+        var userInput = Console.ReadLine();
+        int index = int.Parse(userInput) -1;
+        var chooseCharacter = _harryPotters[index];
+        var animal = _myAnimal.BuyAnimals(chooseCharacter);
+        Console.WriteLine($"{chooseCharacter.Name} is now the owner of a {animal}");
     }
 }

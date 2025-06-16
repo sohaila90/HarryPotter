@@ -16,13 +16,14 @@ public class Store
         new Item("Magic wand", 15),
     };
 
-    public void BuyAnimals(HarryPotter character)
+    public string BuyAnimals(HarryPotter character)
     {
         PrintList(_listOfAnimals);
         Console.WriteLine("Choose on of the options to buy an animal");
         var userOption = Console.ReadLine();
         var number = int.Parse(userOption);
         character.Inventory.Add(_listOfAnimals[number-1]);
+        return _listOfAnimals[number -1].Name;
     }
     
     //Du får tilgang til alle funksjonene som er public i HarryPotter class
